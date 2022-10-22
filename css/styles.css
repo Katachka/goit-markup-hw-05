@@ -10,6 +10,7 @@
     --color-background-team: #F5F4FA;
     --border-line-color:#ECECEC;
     --color-clients-link: #AFB1B8;
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -75,7 +76,7 @@ ul {
 /* site-nav */
 
 .header {
-border-bottom: 1px solid var(--border-line-color);
+    border-bottom: 1px solid var(--border-line-color);
 }
 
 .header-container {
@@ -98,17 +99,19 @@ border-bottom: 1px solid var(--border-line-color);
     padding-top: 32px;
     padding-bottom: 32px;
 
+    position: relative;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     color: var(--color-secondary);
     font-weight: 500;
     line-height: 1.14;
     letter-spacing: 0.02em;
     text-decoration: none;
-    position: relative;
+    
 }
 .site-nav .link:hover,
 .site-nav .link:focus {
-    color: var(--color-accent);
-   
+    color: var(--color-accent);   
 }
 
 .site-nav.current { 
@@ -136,10 +139,12 @@ border-bottom: 1px solid var(--border-line-color);
     margin-right: 50px;
 }
 .contacts .link {
-    display: flex;
+     display: flex;
     align-items: center;
     padding-top: 32px;
     padding-bottom: 32px;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     color: var(--color-primary);
     font-weight: 500;
@@ -154,6 +159,7 @@ border-bottom: 1px solid var(--border-line-color);
 .icon-contact {
     fill: currentColor;
     margin-right: 10px;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* section-hero */
@@ -199,6 +205,7 @@ border-bottom: 1px solid var(--border-line-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     text-align: center;
     
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     color: var(--color-white);
     background-color: var(--color-accent);
@@ -208,9 +215,11 @@ border-bottom: 1px solid var(--border-line-color);
     line-height: 1.88;
     letter-spacing: 0.06em;
     cursor: pointer;
+
 }
 .primary-button:hover,
 .primary-button:focus {
+
  background-color: #188CE8;
 }
 
@@ -312,6 +321,10 @@ gap: 10px;
     justify-content: center;
     width: 44px;
     height: 44px;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill
+     250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     background-color:var(--color-background);
     border-radius: 50%;
     color: var(--color-clients-link);
@@ -320,7 +333,8 @@ gap: 10px;
 .social-icon {
     fill: currentColor;
 }
-.social-link:hover,.social-link:focus {
+.social-link:hover,
+.social-link:focus {
     background-color: var(--color-accent);
     color: var(--color-white);
 }
@@ -343,6 +357,8 @@ gap: 10px;
     border: none;
     border-radius: 4px;
     padding: 6px 22px;
+
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     font-family: inherit;
     font-weight: 500;
@@ -392,11 +408,43 @@ gap: 10px;
     gap: 30px;
 }
 
+
 .portfolio-card {
     text-decoration: none;
     background-color: var(--color-white);
     display: block;
+   
+    transition: box-shadow 250ms var(--timing-function);
 }
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(33, 150, 243, 0.9);
+    padding: 63px 24px;
+    transform: translateY(100%);
+    transition: transform 250ms var(--timing-function);
+}
+
+.overlay-text {
+    font-size: 18px;
+    line-height: 1.56;
+    color: var(--color-white);
+}
+.portfolio-thumb {
+    position: relative;
+    width: 370px;
+    height: 294px;
+    overflow: hidden;
+   
+}
+ .portfolio-card:hover .portfolio-overlay,
+ .portfolio-card:focus .portfolio-overlay {
+    transform: translateY(0);
+ }
+
 .portfolio-card:hover,
 .portfolio-card:focus {
 box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
@@ -426,7 +474,8 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     border: 1px solid var(--color-clients-link);
     border-radius: 4px;
     color: var(--color-clients-link); 
-
+    
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .client-icon {
     fill: currentColor;
@@ -468,6 +517,8 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     color: var(--color-white);
     line-height: 1.7;
     text-decoration: none;
+
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
    
 }
 
@@ -477,6 +528,7 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
 }
 .contacts-foo .contacts:hover,
@@ -499,6 +551,8 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     justify-content: center;
     width: 44px;
     height: 44px;
+
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     color: var(--color-white);
@@ -518,4 +572,60 @@ box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
     gap: 70px;
 }
 
+/* modal */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color:  rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
+.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.backdrop.is-hidden.modal {
+    transform: translate(-50%, -50%) scale(0.5);
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+   
+    min-width: 528px;
+    min-height: 581px ;
+
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    background-color: var(--color-background);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+
+.button-modal-close {
+position: absolute;
+top: 8px;
+right: 8px;
+width: 30px;
+height: 30px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+background:var(--color-background);
+border: 1px solid rgba(0, 0, 0, 0.1);
+cursor: pointer;
+}
+.btn-cross {
+    fill: var(--color-black);
+}
